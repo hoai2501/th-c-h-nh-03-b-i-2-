@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="a" placeholder="Enter number a">
+    <input type="number" id="b" placeholder="Enter number b">
+    <button onclick="calculate()">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        async function calculate() {
+            const a = document.getElementById('a').value;
+            const b = document.getElementById('b').value;
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            const responseAdd = await fetch('http://127.0.0.1:8000/add', {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({ a: parseFloat(a), b: parseFloat(b) })
+            });
+            const resultAdd = await responseAdd.json();
+
+            const responseSubtract = await fetch('http://127.0.0.1:8000/subtract', {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({ a: parseFloat(a), b: parseFloat(b) })
+            });
+            const resultSubtract = await responseSubtract.json();
+
+            const responseMultiply = await fetch('http://127.0.0.1:8000/multiply', {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({ a: parseFloat(a), b: parseFloat(b) })
+            });
+            const resultMultiply = await responseMultiply.json();
+
+            const responseDivide = await fetch('http://127.0.0.1:8000/divide', {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify({ a: parseFloat(a), b: parseFloat(b) })
+            });
+            const resultDivide = await responseDivide.json();
+
+            document.getElementById('result').innerHTML = `
+                Sum: ${resultAdd.result}<br>
+                Difference: ${resultSubtract.result}<br>
+                Product: ${resultMultiply.result}<br>
+                Quotient: ${resultDivide.result}
+            `;
+        }
+    </script>
+</body>
+</html>

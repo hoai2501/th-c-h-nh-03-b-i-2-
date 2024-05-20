@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admintrator</title>
+    <link rel="stylesheet" href="assets/css/css_admin.css">
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.ico"/>
+</head>
+<body>
+    <div class="container">
+        <h2>Quản lí sinh viên</h2>
+        <div class="controls">
+            <button class="logout" onclick="logout()">Đăng xuất</button>
+            
+        </div>
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>Mã Sinh Viên</th>
+                    <th>Tên</th>
+                    <th>Năm sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Điểm tổng kết</th>
+                    <th>Mã Ngành</th>
+                    <th>Mã Khóa Học</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="add-student-form" class="modal">
+        <div class="modal-content">
+            
+            <form id="studentForm">
+                <input type="number" id="MaSV" name="MaSV" placeholder="Mã Sinh Viên" required>
+                <input type="text" id="HoTen" name="HoTen" placeholder="Tên" required>
+                <input type="date" id="NgaySinh" name="NgaySinh" placeholder="Năm sinh" required>
+                <input type="text" id="DiaChi" name="DiaChi" placeholder="Địa chỉ" required>
+                <input type="number" id="DiemTongKet" name="DiemTongKet" placeholder="Điểm tổng kết" required>
+                <input type="number" id="MaNganh" name="MaNganh" placeholder="Mã Ngành" required>
+                <input type="number" id="MaKhoaHoc" name="MaKhoaHoc" placeholder="Mã Khóa Học" required>
+                
+            </form>
+        </div>
+    </div>
+
+    <div id="edit-student-form" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideEditStudentForm()">&times;</span>
+            <h2>Chỉnh sửa</h2>
+            <form id="editStudentForm">
+                <input type="text" id="editMaSV" name="MaSV" placeholder="Mã Sinh Viên" readonly>
+                <input type="text" id="editHoTen" name="HoTen" placeholder="Tên" required>
+                <input type="text" id="editNgaySinh" name="NgaySinh" placeholder="Năm sinh" required>
+                <input type="text" id="editDiaChi" name="DiaChi" placeholder="Địa chỉ" required>
+                <input type="text" id="editDiemTongKet" name="DiemTongKet" placeholder="Điểm tổng kết" required>
+                <input type="text" id="editMaNganh" name="MaNganh" placeholder="Mã Ngành" required>
+                <input type="text" id="editMaKhoaHoc" name="MaKhoaHoc" placeholder="Mã Khóa Học" required>
+                <button type="submit">Cập nhật sinh viên</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/script_admin.js">
+        
+    </script>
+</body>
+</html>
